@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://sky_tile.png" type="Texture" id=2]
+[ext_resource path="res://grass.png" type="Texture" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Michelle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://hill.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.5, 1 )
+
+[node name="World" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sky" type="TextureRect" parent="."]
+margin_right = 320.0
+margin_bottom = 144.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Grass" type="TextureRect" parent="."]
+margin_top = 144.0
+margin_right = 320.0
+margin_bottom = 176.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Justin" parent="." instance=ExtResource( 4 )]
+position = Vector2( 32, 128 )
+
+[node name="Michelle" parent="." instance=ExtResource( 5 )]
+position = Vector2( 288, 128 )
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Level"]
+position = Vector2( 160, 160 )
+scale = Vector2( 320, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor"]
+self_modulate = Color( 0.294118, 0.847059, 0.137255, 1 )
+shape = SubResource( 1 )
+
+[node name="Hill" type="StaticBody2D" parent="Level"]
+position = Vector2( 176, 119 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Hill"]
+modulate = Color( 0.333333, 0.333333, 0.333333, 1 )
+self_modulate = Color( 0.345098, 0.345098, 0.345098, 1 )
+polygon = PoolVector2Array( -64, 25, -16, 9, 32, -23, 96, -23, 96, 25, -64, 25 )
+
+[node name="hill" type="Sprite" parent="Level/Hill"]
+position = Vector2( 16, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 0, 144, -32, 144, -32, -32, 352, -32, 352, 144, 320, 144, 320, 0, 0, 0 )
+
