@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Godot Engine
+Comment=A game engine
+Path=/home/force/src/godot_projects/3.1
+Exec=/home/force/src/godot_projects/3.1/Godot_v3.1-stable_x11.64
+Icon=/home/force/src/godot_projects/3.1/godot.png
+Terminal=false
+Type=Application
+StartupNotify=true
